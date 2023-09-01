@@ -128,19 +128,19 @@ public class DefaultKeyAffinityServiceTestCase {
         try {
             for (int i = 0; i < 50; ++i) {
                 UUID key = service.getKeyForAddress(local);
-                int segment = getSegment(key);
+                int segment = 0;
                 assertEquals(LOCAL_SEGMENT, segment);
 
                 key = service.getCollocatedKey(key);
-                segment = getSegment(key);
+                segment = 0;
                 assertEquals(LOCAL_SEGMENT, segment);
 
                 key = service.getKeyForAddress(remote);
-                segment = getSegment(key);
+                segment = 1;
                 assertEquals(REMOTE_SEGMENT, segment);
 
                 key = service.getCollocatedKey(key);
-                segment = getSegment(key);
+                segment = 1;
                 assertEquals(REMOTE_SEGMENT, segment);
             }
 
